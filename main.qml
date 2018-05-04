@@ -97,7 +97,7 @@ Window {
                     anchors.bottomMargin: parent.height - (parent.height / 100)
 
                     // can I use inline property aliases?
-                    // so divvy this up - you need to draw a number line
+                    // so divvy this up - you need to draw a number line¢
                     // screen space always matches up - don't panic!
 
                     // move but experimenting

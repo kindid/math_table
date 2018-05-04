@@ -20,6 +20,7 @@ Repeater {
         // 'modelData' would work EXCEPT it doesn't seem to be supported by
         // ListModel only StringList
         color: _color
+        text_color: '#000000'
         // more model data (easily fixed TBH)
         text: q // what the hell is 'q'
         Behavior on rotation { NumberAnimation { duration: 300 } }
