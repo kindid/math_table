@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>SumHorizontal.qml</file>
+        <file>QuestionViewText.qml</file>
+        <file>TableGenView.qml</file>
+        <file>OpView.qml</file>
+        <file>XHeaderView.qml</file>
+        <file>YHeaderView.qml</file>
+        <file>MathTableView.qml</file>
+        <file>NumberBox.qml</file>
+        <file>NumberTableModel.qml</file>
+    </qresource>
+</RCC>
