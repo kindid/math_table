@@ -12,5 +12,6 @@
         <file>NumberTableModel.qml</file>
         <file>images/blackboard.jpg</file>
         <file>HeaderViewModel.qml</file>
+        <file>images/circle.png</file>
     </qresource>
 </RCC>

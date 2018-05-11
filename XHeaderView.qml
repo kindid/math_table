@@ -2,10 +2,13 @@ import QtQuick 2.0
 
 Item {
     id: container
-    anchors.fill: parent
+
     property string color: '#ff0000'
     property int highlighted: -1
+    signal highlightChange(int xx)
 
+    anchors.fill: parent
+    // defunct. just look at how it's handled now! A thing of beauty!
     function highlight(x) {
         // god damn - I wrote 'state' not '_state' this really needs fixing up
         for (var i = 0; i <= 10; i++) {
@@ -18,32 +21,26 @@ Item {
         id: _model
     }
 
-    //    Text {
-    //        text: '_x_header'
-    //    }
-    // one of these needs to be highlighted.
     Row {
         anchors.fill: parent
         Repeater {
             model: _model
             delegate: NumberBox {
-                //border_on: true
-                //            Text {
-                //                width: 40
-                //                height: 40
-                // no matter what this doesn't work - the dimensions need to be passed in
-                width: container.width / 11 // doesn't work.
-                height: container.width / 11   //does work
+                // TODO: this /11 needs to reflect the table size
+                width: container.width / 11
+                height: container.width / 11
                 text: zz
                 color: _color
                 state: highlighted === index ? 'highlight' : 'normal' //_state
                 text_color: '#00ff00'
-                // set state i guess....
-//                color: Qt.hsla((index / 8) % 1, 0.3, 0.5, 1).toString()
+                // what we might want is to drag and drop
+                // a number from the sum onto the table header
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        console.log("blah " + index)
+                        highlighted = index;
+                        highlightChange(index)
+//                        console.log("blah " + index)
                     }
                 }
             }

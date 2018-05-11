@@ -139,6 +139,10 @@ Window {
                     anchors.leftMargin: (parent.width / 12)
                     anchors.bottomMargin: parent.height - (parent.height / 12)
 
+                    onHighlightChange: {
+                        console.log(xx)
+                    }
+
                     // can I use inline property aliases?
                     // so divvy this up - you need to draw a number line¢
                     // screen space always matches up - don't panic!
@@ -196,11 +200,21 @@ Window {
                             // how do I affect just the element i wanted changed?
                             console.log(xx, yy);
                             //_x_header.highlight(xx)
-                            _x_header.highlighted = xx
+                            //_x_header.highlighted = xx
                             _y_header.highlight(yy)
                         }
                     }
                 }
+
+                Image {
+                    id: circled_number
+                    x: 3 * (parent.width / 12) - 5
+                    y: 3 * (parent.height / 12) - 5
+                    width: (parent.width / 12) + 10
+                    height: (parent.height / 12) + 10
+                    source: 'qrc:/images/circle.png'
+                }
+
 
                 // this is the table model. just alias the model over.
             }
