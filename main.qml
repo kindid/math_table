@@ -134,7 +134,7 @@ Window {
                 // there are actually 12 divisions... 12 along the X header and a
                 // 12 which is op and yheader
                 XHeaderView {
-                    id: _x_header2
+                    id: _x_header
                     anchors.fill: parent
                     anchors.leftMargin: (parent.width / 12)
                     anchors.bottomMargin: parent.height - (parent.height / 12)
@@ -153,6 +153,39 @@ Window {
                     anchors.topMargin: (parent.height / 12)
                 }
 
+                // this is just a test
+                Rectangle {
+                    color:'#ffffff'     // fix - make type safe (everything should be type safe! dynamic properties have either a default value or 'optional')
+                    x: 0
+                    y: parent.height / 12
+                    width: parent.width
+                    height: 1
+                }
+
+                Rectangle {
+                    color:'#ffffff'     // fix - make type safe (everything should be type safe! dynamic properties have either a default value or 'optional')
+                    x: parent.width / 12
+                    y: 0
+                    width: 1
+                    height: parent.height
+                }
+
+                Rectangle {
+                    color:'#ffffff'     // fix - make type safe (everything should be type safe! dynamic properties have either a default value or 'optional')
+                    x: 0
+                    y: 0
+                    width: parent.width
+                    height: 1
+                }
+
+                Rectangle {
+                    color:'#ffffff'     // fix - make type safe (everything should be type safe! dynamic properties have either a default value or 'optional')
+                    x: 0
+                    y: 0
+                    width: 1
+                    height: parent.height
+                }
+
                 Item {
                     anchors.fill: parent
                     anchors.leftMargin: (parent.width / 12)
@@ -162,7 +195,8 @@ Window {
                             // this tells you which column and row BUT
                             // how do I affect just the element i wanted changed?
                             console.log(xx, yy);
-                            _x_header2.highlight(xx)
+                            //_x_header.highlight(xx)
+                            _x_header.highlighted = xx
                             _y_header.highlight(yy)
                         }
                     }

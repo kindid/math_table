@@ -9,21 +9,17 @@ Item {
     Rectangle {
         id: _background
         anchors.fill: parent
-        anchors.margins: 1
-        /*
-        anchors.leftMargin: 0
-        anchors.rightMargin: 1
-        anchors.topMargin: 0
-        anchors.bottomMargin: 1
-        */
-        border.width: border_on ? 1 : 0
+        anchors.leftMargin: 1
+        anchors.topMargin: 1
+        // TODO:not sure
+        //border.width: border_on ? 1 : 0
         Behavior on color { ColorAnimation { duration: 150 } }
     }
     Text {
         id: _text
         anchors.fill: parent
         anchors.rightMargin: 3
-        color: '#0000ff'
+        //color: '#0000ff'
         //        text: '+'
         font.pixelSize: height * 0.5
         horizontalAlignment: Text.AlignRight

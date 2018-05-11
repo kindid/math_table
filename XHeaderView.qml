@@ -4,6 +4,7 @@ Item {
     id: container
     anchors.fill: parent
     property string color: '#ff0000'
+    property int highlighted: -1
 
     function highlight(x) {
         // god damn - I wrote 'state' not '_state' this really needs fixing up
@@ -35,7 +36,8 @@ Item {
                 height: container.width / 11   //does work
                 text: zz
                 color: _color
-                state: _state
+                state: highlighted === index ? 'highlight' : 'normal' //_state
+                text_color: '#00ff00'
                 // set state i guess....
 //                color: Qt.hsla((index / 8) % 1, 0.3, 0.5, 1).toString()
                 MouseArea {

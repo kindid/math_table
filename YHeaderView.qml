@@ -24,6 +24,7 @@ Item {
                 text: index
 //                color: Qt.hsla((index / 8) % 1, 0.3, 0.5, 1).toString()
                 color: _color
+                text_color: '#0000ff'
                 state: _state
             }
         }
