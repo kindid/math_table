@@ -5,7 +5,7 @@ ListModel {
 //    id: table
     signal ready()
     function highlight(index) {
-        console.log("boo " + index)
+        //console.log("boo " + index)
         var item = get(index)
         var xx = item.xx
         var yy = item.yy
@@ -33,6 +33,7 @@ ListModel {
 
     Component.onCompleted: {
         var counter = 0;
+        var qmod = 10
         // need header row too. doesn't expand out the same way
         // example -
         // sub-delegate typing is really tedious. WHY?
@@ -43,8 +44,8 @@ ListModel {
                 // this toString **** is rubbish too. This is what happens when you don't
                 // have proper types! what if we want different interpolation? argh!
                 //var color = Qt.hsla((q / 8) % 1, 0.5, 0.7, 1).toString()
-                var color = Qt.hsla((q / 8) % 1, 0.3, 0.5, 1).toString()
-                var highlight_color = Qt.hsla((q / 8) % 1, 1, 0.9, 1).toString()
+                var color = Qt.hsla((q / qmod) % 1, 0.3, 0.5, 1).toString()
+                var highlight_color = Qt.hsla((q / qmod) % 1, 1, 0.9, 1).toString()
                 // object notation sucks... frankly it should look like code anyway (that's what it is)
                 // it's a function that returns an object and assignments within it are assignments to
                 // properties of the returned object. kill that syntax
@@ -52,7 +53,7 @@ ListModel {
                            'idx': counter,
                            'xx': x,
                            'yy': y,
-                           'q': x + y,
+                           'q': q,
                            // this _ **** is due to ambiguity in delegates - frankly. it sucks quite a lot
                            // and is the single biggest annoyance so far (streets ahead of the onComplete rubbish)
                            '_color': color,

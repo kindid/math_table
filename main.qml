@@ -15,6 +15,12 @@ Window {
     property string y_number
     // what else you got?
 
+    Image {
+        anchors.fill: parent
+        fillMode: Image.PreserveAspectCrop
+        source: 'qrc:/images/blackboard.jpg'
+    }
+
     // just import this surely. DONE
     NumberTableModel {
         id: table
@@ -49,7 +55,8 @@ Window {
         id: content
         anchors.fill: parent
         anchors.topMargin: 30
-        color: Qt.hsla(1,1,1,1)//'#ddddff'
+        color: 'transparent'
+//        color: Qt.hsla(1,1,1,1)//'#ddddff'
 
         Item {
             anchors.fill: parent
@@ -65,13 +72,37 @@ Window {
                 x: (parent.width - Math.min(parent.width, parent.height)) / 2
                 y: (parent.height - Math.min(parent.width, parent.height)) / 2
 
+                // test;this is just a test
+                // note;hmm. only 2 of these - one for col and one for row
+                // possibly cool intersection
+                //  maybe even particles
+                Rectangle {
+                    id: col_highlight
+                    x: (parent.width / 12) * 4
+                    y: 0
+                    width: (parent.width / 12)
+                    height: parent.height
+                    color: '#000'
+                }
+
+                Rectangle {
+                    id: row_highlight
+                    x: 0
+                    y: (parent.height / 12) * 7
+                    width: parent.width
+                    height: parent.height / 12
+                    color: '#000'
+                }
+
                 // expose this - you'll want to set the text AND it has some
                 // very pleasant side effects if clicked.
                 OpView {      // todo; _op = Item { }// please.
                     id: _op
                     anchors.fill: parent
-                    anchors.rightMargin: parent.width - (parent.width / 11)
-                    anchors.bottomMargin: parent.height - (parent.height / 11)
+                    anchors.rightMargin: parent.width - (parent.width / 12)
+                    anchors.bottomMargin: parent.height - (parent.height / 12)
+                    text: '+'
+                    color: '#ff8080'
                     // can I use inline property aliases?
                     // fine, how do i set properties. like text.
                     //Loader { sourceComponent: standardText }
@@ -89,12 +120,24 @@ Window {
                 // anyone about this or put it on any advertising.
                 // only those that have played the game will know
                 // this is here. that includes reviewers.
-
-                XHeaderView {
+/*
+                Rectangle {
                     id: _x_header
                     anchors.fill: parent
-                    anchors.leftMargin: (parent.width / 11)
-                    anchors.bottomMargin: parent.height - (parent.height / 100)
+                    anchors.leftMargin: (parent.width / 12)
+                    anchors.bottomMargin: parent.height - (parent.height / 12)
+                    color: "#ff8080"
+                    border.width: 1
+                }
+*/
+                // the aspect ratio of this box needs to be 1:12 (numbers 0 to 10)
+                // there are actually 12 divisions... 12 along the X header and a
+                // 12 which is op and yheader
+                XHeaderView {
+                    id: _x_header2
+                    anchors.fill: parent
+                    anchors.leftMargin: (parent.width / 12)
+                    anchors.bottomMargin: parent.height - (parent.height / 12)
 
                     // can I use inline property aliases?
                     // so divvy this up - you need to draw a number line¢
@@ -106,15 +149,23 @@ Window {
                 YHeaderView {
                     id: _y_header
                     anchors.fill: parent
-                    anchors.rightMargin: parent.width - (parent.width / 11)
-                    anchors.topMargin: (parent.height / 11)
+                    anchors.rightMargin: parent.width - (parent.width / 12)
+                    anchors.topMargin: (parent.height / 12)
                 }
 
                 Item {
                     anchors.fill: parent
-                    anchors.leftMargin: (parent.width / 11)
-                    anchors.topMargin: (parent.height / 11)
-                    TableGenView { }
+                    anchors.leftMargin: (parent.width / 12)
+                    anchors.topMargin: (parent.height / 12)
+                    TableGenView {
+                        onEnterNB: {
+                            // this tells you which column and row BUT
+                            // how do I affect just the element i wanted changed?
+                            console.log(xx, yy);
+                            _x_header2.highlight(xx)
+                            _y_header.highlight(yy)
+                        }
+                    }
                 }
 
                 // this is the table model. just alias the model over.

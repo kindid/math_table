@@ -1,6 +1,7 @@
 import QtQuick 2.0
 
 Repeater {
+    signal enterNB(int xx, int yy)
     model: table
     // each one of these is a number box
     delegate: NumberBox {
@@ -23,8 +24,8 @@ Repeater {
         text_color: '#000000'
         // more model data (easily fixed TBH)
         text: q // what the hell is 'q'
-        Behavior on rotation { NumberAnimation { duration: 300 } }
-        Behavior on color { ColorAnimation { duration: 300 } }
+//        Behavior on rotation { NumberAnimation { duration: 300 } }
+//        Behavior on color { ColorAnimation { duration: 150 } }
         //Behavior on border.width { NumberAnimation { duration: 500 } }
 /*
         // It's just another numberbox man.
@@ -41,6 +42,7 @@ Repeater {
         }
         */
         // yeah, this is interesting and dangerous nice.
+        /*
         states: [
             State {
                 name: "normal"
@@ -62,19 +64,25 @@ Repeater {
                 }
                 PropertyChanges {
                     target: rectangle
-                    border.width: 1
+//                    border.width: 1
                 }
             }
         ]
+        */
         state: _state   // from model - this is either brilliant or evil - not the naming - how the hell do i get round this?
         // nasty isn't it. it's existence at this stage is only implied. we do not know what it is.
         //
+
+        // this needs to match up with the rows and columns.. Hmmm...
 
         // just emit the damn thing.. *poof* off it goes.
         MouseArea {
             anchors.fill: parent
             hoverEnabled: true  // why? LTBHIB
             onEntered: {
+                enterNB(xx, yy)
+                // yeah, lot of work in here
+                //  now, what about the headers.
                 table.clean_colors()
                 table.highlight(idx)
                 var item = table.get(idx)
@@ -83,6 +91,8 @@ Repeater {
 
                 //                                parent.state = 'highlight'
             }
+
+
             // way cool property setters - all works thru the event loop i reckons
             onExited: {
                 var item = table.get(idx)

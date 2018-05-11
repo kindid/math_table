@@ -1,0 +1,6 @@
+
+
+Each cell has a colour that represents it's value
+    Not quite sure how this will operate
+        There are 20 possible outcomes - that's probably too many colours to be understandable
+            POSSIBLY... there may be ways

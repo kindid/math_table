@@ -10,5 +10,7 @@
         <file>MathTableView.qml</file>
         <file>NumberBox.qml</file>
         <file>NumberTableModel.qml</file>
+        <file>images/blackboard.jpg</file>
+        <file>HeaderViewModel.qml</file>
     </qresource>
 </RCC>
