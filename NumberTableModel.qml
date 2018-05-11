@@ -67,7 +67,7 @@ ListModel {
                        });
                 counter++
                 // FAR TOO WORDY
-                console.log(Qt.hsla(q / 20,1,0.5,1).toString())
+                //console.log(Qt.hsla(q / 20,1,0.5,1).toString())
                 //'#ffff00' })
             }
         }

@@ -2,6 +2,8 @@ import QtQuick 2.0
 
 Item {
     id: container
+    property int highlighted: -1
+    signal highlightChange(int yy)
 
     function highlight(x) {
         // god damn - I wrote 'state' not '_state' this really needs fixing up
@@ -25,7 +27,16 @@ Item {
 //                color: Qt.hsla((index / 8) % 1, 0.3, 0.5, 1).toString()
                 color: _color
                 text_color: '#0000ff'
-                state: _state
+                state: highlighted === index ? 'highlight' : 'normal' //_state
+                //state: _state
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        highlighted = index;
+                        highlightChange(index)
+    //                        console.log("blah " + index)
+                    }
+                }
             }
         }
     }

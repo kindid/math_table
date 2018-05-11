@@ -3,11 +3,15 @@ import QtQuick 2.0
 Item {
     property int x_highlight: -1
     property int y_highlight: -1
+    property alias model: repeater.model
+    signal enterNB(int xx, int yy)
+
+    anchors.fill: parent
 
     Repeater {
-        signal enterNB(int xx, int yy)
+        id: repeater
         // map this in via a property - don't rely on scope variables
-        model: table
+        //model: table
         // each one of these is a number box
         delegate: NumberBox {
             id: rectangle
@@ -74,7 +78,10 @@ Item {
             }
         ]
         */
-            state: _state   // from model - this is either brilliant or evil - not the naming - how the hell do i get round this?
+            //state: (xx === y_highlight || yy === x_highlight || xx === x_highlight || yy === y_highlight) ? 'highlight' : 'normal'
+            state: (xx === x_highlight || yy === y_highlight) ? 'highlight' : 'normal'
+
+            //state: _state   // from model - this is either brilliant or evil - not the naming - how the hell do i get round this?
             // nasty isn't it. it's existence at this stage is only implied. we do not know what it is.
             //
 
@@ -106,16 +113,16 @@ Item {
                     item._color = item._default_color
                     item._state = 'normal'
                 }
-
+/*
                 onClicked: {
                     var item = table.get(idx)
-                    console.log(JSON.stringify(item))
+                    //console.log(JSON.stringify(item))
                     // you don't need to change the colour of the cell, just update
                     // an overlay (for now)
                     item._color = '#ffffff'
                     //                                table.setProperty(idx, '_color', Qt.rgba(1,1,1,1))
                     //)(idx)._color = Qt.rgba(1,1,1,1)
-                }
+                } */
             }
         }
     }
