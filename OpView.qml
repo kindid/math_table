@@ -15,19 +15,8 @@ Item {
         anchors.fill: parent
         anchors.rightMargin: 3
         color: '#0000ff'
-        //        text: '+'
         font.pixelSize: height * 0.666
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
     }
 }
-
-
-//// bring in anthing else
-//NumberBox {
-//    anchors.fill: parent
-//    color: '#ffff80'
-//    text_color: '#000000'
-//    text: '+'
-//    //font.pixelSize: height
-//}

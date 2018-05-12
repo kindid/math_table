@@ -6,6 +6,8 @@ ListModel {
         for (var z = 0; z <= 10; z++) {
             var color = Qt.hsla((z / qmod) % 1, 0.3, 0.6, 1).toString()
             var highlight_color = Qt.hsla((z / qmod) % 1, 1, 0.9, 1).toString()
+            // dunno how much of this is left
+            // it is still applicable
             append({
                'zz': z,
                '_color': color,

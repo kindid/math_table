@@ -23,7 +23,7 @@ Window {
 
     // just import this surely. DONE
     NumberTableModel {
-        id: table
+        id: number_table_model
     }
 
     Rectangle {
@@ -142,6 +142,7 @@ Window {
                     // can I have a reverse binding here?
                     // that is I want to bind from
                     onHighlightChange: {
+                        // update the circle
                         number_table.x_highlight = xx
                         //console.log(xx)
                     }
@@ -203,15 +204,7 @@ Window {
                     anchors.topMargin: (parent.height / 12)
                     TableGenView {
                         id: number_table
-                        model: table
-                        onEnterNB: {
-                            // this tells you which column and row BUT
-                            // how do I affect just the element i wanted changed?
-                            //console.log(xx, yy);
-                            //_x_header.highlight(xx)
-                            //_x_header.highlighted = xx
-                            _y_header.highlight(yy)
-                        }
+                        model: number_table_model
                     }
                 }
 /*
